@@ -1,8 +1,4 @@
-# Sample 01 - Login
-
-The purpose of this article is to demonstrate how simple it is to set up and use the new Single Page Application SDK, and authenticate a user in your application using Auth0's Universal Login Page.
-
-## Running the Sample Application
+# Pizza 42 Login Sample
 
 The sample can be run locally, by cloning the repository to your machine and then following the steps below.
 
@@ -12,8 +8,8 @@ To specify the application client ID and domain, make a copy of `auth_config.jso
 
 ```json
 {
-  "domain": "cic-labs-demo.eu.auth0.com",
-  "clientId": "E5opPgzkV6ep0LHnzVGqatA4qk0OWV9N"
+  "domain": "<DOMAIN>",
+  "clientId": "<CLIENT_ID>"
 }
 ```
 
