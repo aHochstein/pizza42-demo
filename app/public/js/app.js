@@ -25,7 +25,7 @@ const login = async (targetUrl) => {
 };
 
 /**
- * Starts the authentication flow with mfa
+ * Starts the authentication flow
  */
 const stepUp = async (targetUrl) => {
   try {
@@ -87,11 +87,10 @@ const configureClient = async () => {
  * is prompted to log in
  * @param {*} fn The function to execute if the user is logged in
  */
-const requireAuth = async (stepUp, fn, targetUrl) => {
+const requireAuth = async (fn, targetUrl) => {
   const isAuthenticated = await auth0Client.isAuthenticated();
 
   if (isAuthenticated) {
-    await stepUp(targetUrl);
     return fn();
   }
 
@@ -104,12 +103,12 @@ const requireAuth = async (stepUp, fn, targetUrl) => {
  * @param {*} fn The function to execute if the user is logged in
  */
 const requireStepUp = async (fn, targetUrl) => {
+  const isAuthenticated = await auth0Client.isAuthenticated();
   var claims = await auth0Client.getIdTokenClaims();
-  console.log(claims);
-  // if(claims.acr === "http://schemas.openid.net/pape/policies/2007/06/multi-factor") {
-  //   return fn();
-  // }
-
+  if(isAuthenticated && claims.acr === "http://schemas.openid.net/pape/policies/2007/06/multi-factor") {
+    return fn();
+  }
+  return stepUp(targetUrl);
 };
 
 // Will run when page finishes loading
@@ -136,17 +135,6 @@ window.onload = async () => {
     }
   });
 
-  const isAuthenticated = await auth0Client.isAuthenticated();
-
-  if (isAuthenticated) {
-    console.log("> User is authenticated");
-    window.history.replaceState({}, document.title, window.location.pathname);
-    updateUI();
-    return;
-  }
-
-  console.log("> User not authenticated");
-
   const query = window.location.search;
   const shouldParseResult = query.includes("code=") && query.includes("state=");
 
@@ -166,6 +154,17 @@ window.onload = async () => {
 
     window.history.replaceState({}, document.title, "/");
   }
+
+  const isAuthenticated = await auth0Client.isAuthenticated();
+
+  if (isAuthenticated) {
+    console.log("> User is authenticated");
+    window.history.replaceState({}, document.title, window.location.pathname);
+    updateUI();
+    return;
+  }
+
+  console.log("> User not authenticated");
 
   updateUI();
 };
