@@ -1,0 +1,33 @@
+.hidden {
+  display: none;
+}
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.navbar {
+  min-height: 115px;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+
+.bg-img {
+  background-image: url('../images/bg_pizzeria.jpg');
+  background-size: cover;   -ms-background-size: cover;   -o-background-size: cover;   -moz-background-size: cover;   -webkit-background-size: cover; 
+  background-repeat: repeat;
+  display: flex;
+}
+
+.pizza-container {
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+.pizza-text {
+  margin-top: 20px;
+}
