@@ -1,0 +1,18 @@
+service: cic-labs-api
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  crm:
+    handler: handler.crm
+    events:
+      - httpApi:
+          path: /crm
+          method: get
+
