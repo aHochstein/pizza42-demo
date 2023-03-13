@@ -170,3 +170,40 @@ resource "auth0_attack_protection" "attack_protection" {
     }
   }
 }
+
+resource "auth0_branding_theme" "my_theme" {
+  fonts {
+    title {}
+    subtitle {}
+    links {}
+    input_labels {}
+    buttons_text {}
+    body_text {}
+  }
+
+  borders {
+    show_widget_shadow   = false
+    widget_border_weight = 1
+    widget_corner_radius = 50
+  }
+
+  colors {
+
+    primary_button           = "#30AAC0"
+    base_focus_color         = "#30AAC0"
+    links_focused_components = "#30AAC0"
+  }
+
+  page_background {
+    background_image_url = "https://pizza42.authfest.com/images/bg_pizzeria.jpg"
+    page_layout          = "center"
+  }
+
+  widget {
+    header_text_alignment = "center"
+    logo_height           = 100
+    logo_position         = "center"
+    logo_url              = "https://pizza42-demo.vercel.app/images/pizza42_logo.png"
+    social_buttons_layout = "top"
+  }
+}
