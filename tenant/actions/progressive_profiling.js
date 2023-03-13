@@ -12,13 +12,13 @@ const maxRequestedAttributes = 4;
 // Lastly the schema defines which attributes should be present in the user profile
 // it also defines the theme of the profiling app.
 const schema = {
-  "title": "Animal Store", // headline of the page
-  "subheading": "Tell us something about your pet.", // subheading of the page (optional)
+  "title": "Pizza42", // headline of the page
+  "subheading": "Please tell as your address for delivery", // subheading of the page (optional)
   "theme": {
-      "logoUrl": "https://cdn.auth0.com/website/bob/press/shield-dark.png", // logo url (optional)
-      "backgroundColor": "#f1f1f1", // (optional)
-      "backgroundImage": "https://my-awesome-image.com", // (optional)
-      "accentColor": "#fff"  // (optional)
+      "logoUrl": "https://pizza42.authfest.com/images/pizza42_logo.png",
+      "backgroundColor": "#000000", // (optional)
+      "backgroundImage": "https://pizza42.authfest.com/images/bg_pizzeria.jpg", // (optional)
+      "accentColor": "#30AAC0"  // (optional)
   },
   "properties": {
       "street": {
@@ -55,6 +55,9 @@ const {
  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
  */
 exports.onExecutePostLogin = async (event, api) => {
+  if(event.user.app_metadata.hasCrm) {
+    return;
+  }
   // calculate the schema to request based upon provided settings + current user profile
   const schemaForRedirect = calculateSchemaToRequest(
     schema, // as configured above
