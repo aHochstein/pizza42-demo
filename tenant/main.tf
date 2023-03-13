@@ -20,7 +20,7 @@ resource "auth0_prompt" "prompt" {
 }
 
 resource "auth0_guardian" "mfa_settings" {
-  policy        = "all-applications"
+  policy        = "confidence-score"
   otp           = true
   recovery_code = true
   webauthn_platform {
@@ -129,12 +129,12 @@ resource "auth0_connection" "users" {
   }
 }
 
-resource "auth0_client" "cic_labs_demo" {
-  name           = "CIC Labs Demo Application"
-  description    = "Application to Demo CIAM UseCases"
-  app_type       = "spa"
+resource "auth0_client" "pizza42" {
+  name                       = "Pizza42"
+  description                = "Pizza 42 Application"
+  app_type                   = "spa"
   token_endpoint_auth_method = "none"
-  is_first_party = true
+  is_first_party             = true
   grant_types = [
     "authorization_code"
   ]
@@ -143,16 +143,19 @@ resource "auth0_client" "cic_labs_demo" {
     secret_encoded      = true
     alg                 = "RS256"
   }
+  callbacks           = ["https://pizza42.authfest.com"]
+  allowed_logout_urls = ["https://pizza42.authfest.com"]
+  web_origins         = ["https://pizza42.authfest.com"]
 }
 
-resource "auth0_connection_client" "cic_labs_demo_client_google_connection" {
+resource "auth0_connection_client" "pizza42_client_google_connection" {
   connection_id = auth0_connection.google_oauth2.id
-  client_id     = auth0_client.cic_labs_demo.id
+  client_id     = auth0_client.pizza42.client_id
 }
 
-resource "auth0_connection_client" "cic_labs_demo_client_users_connection" {
+resource "auth0_connection_client" "pizza42_demo_client_users_connection" {
   connection_id = auth0_connection.users.id
-  client_id     = auth0_client.cic_labs_demo.id
+  client_id     = auth0_client.pizza42.id
 }
 
 resource "auth0_attack_protection" "attack_protection" {
