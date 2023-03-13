@@ -36,6 +36,8 @@ label {
   color: white !important;
 }
 
-.btn-primary {
-  background-color : "#32AEC3" !important;
+.btn-pizza {
+  background-color : #30AAC0;
+  color: #fff;
+  border-color: #007bff;
 }
