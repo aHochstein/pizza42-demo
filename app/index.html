@@ -40,7 +40,7 @@
             class="mb-3 app-logo"
             src="/images/pizza42_logo_white.png"
             alt="JavaScript logo"
-            width="75"
+            width="100"
           />
             <button
               class="navbar-toggler"
@@ -63,7 +63,7 @@
               <ul class="navbar-nav d-none d-md-block">
                 <!-- Login button: show if NOT authenticated -->
                 <li class="nav-item auth-invisible">
-                  <button
+                  <button 
                     id="qsLoginBtn"
                     onclick="login()"
                     class="btn btn-primary btn-margin auth-invisible hidden"
@@ -101,7 +101,7 @@
                     href="/payment"
                     class="dropdown-item dropdown-profile route-link"
                     >
-                    <i class="fas fa-user mr-3"></i> Payment
+                    <i class="fas fa-credit-card mr-3"></i> Payment
                     </a>
                     <a
                       href="#"
@@ -173,7 +173,7 @@
       </div>
 
       <div id="main-content" class="container mt-5 flex-grow-1">
-        <div id="content-home" class="page">
+        <div id="content-home" class="page hidden">
           <div class="next-steps">
             <div class="row">
               <div class="col-md-5 mb-4 bg-dark pizza-container">
@@ -241,9 +241,9 @@
           </div>
         </div>
 
-        <div class="page" id="content-profile">
-          <div class="container pizza-container">
-            <div class="row align-items-center profile-header">
+        <div class="page hidden" id="content-profile">
+          <div class="container">
+            <div class="row align-items-center profile-header pizza-container bg-dark">
               <div class="col-md-2">
                 <img
                   alt="User's profile picture"
@@ -263,18 +263,46 @@
 
           </div>
         </div>
-        <div class="page" id="content-payment">
-          <div class="container pizza-container">
-            <div class="row align-items-center profile-header">
-              <div class="col-md-2">
-                <img
-                  alt="User's profile picture"
-                  class="rounded-circle img-fluid profile-image mb-3 mb-md-0"
-                />
-              </div>
+        <div class="page hidden" id="content-payment">
+          <div class="container">
+            <div class="row align-items-center profile-header pizza-container bg-dark">
               <div class="col-md">
-                <h2 class="user-name"></h2>
-                <p class="lead text-muted user-email"></p>
+                <h2>Payment Information</h2>
+                <p>Your Credit Card Information</p>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-name">Name on card</label>
+                    <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                    <small class="text-muted">Full name as displayed on card</small>
+                    <div class="invalid-feedback">
+                      Name on card is required
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-number">Credit card number</label>
+                    <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                    <div class="invalid-feedback">
+                      Credit card number is required
+                    </div>
+                  </div>
+         
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-name">Name on card</label>
+                      <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                      <small class="text-muted">Full name as displayed on card</small>
+                      <div class="invalid-feedback">
+                        Name on card is required
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <label for="cc-number">Credit card number</label>
+                      <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                      <div class="invalid-feedback">
+                        Credit card number is required
+                      </div>
+                    </div>
+                 
+                </div>
               </div>
             </div>
           </div>
