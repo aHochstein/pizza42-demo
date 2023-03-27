@@ -25,7 +25,7 @@ function login(email, password, callback) {
           maxBodyLength: Infinity,
           url: configuration.userinfo_endpoint,
           headers: {
-            'Authorization': `Bearer $${response.data.access_token}`}
+            'Authorization': `Bearer ${response.data.access_token}`}
         };
 
     axios(config)
