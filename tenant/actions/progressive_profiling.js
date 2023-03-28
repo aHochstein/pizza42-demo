@@ -55,7 +55,7 @@ const {
  * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
  */
 exports.onExecutePostLogin = async (event, api) => {
-  if(event.user.app_metadata.hasCrm) {
+  if(event.user.app_metadata.hasCrm || event.user.user_metadata.delivery_address) {
     return;
   }
   // calculate the schema to request based upon provided settings + current user profile
@@ -101,10 +101,10 @@ exports.onContinuePostLogin = async (event, api) => {
   // ... and update the user profile if necessary
   const userData = payload.requiredData;
   if (userData) {
-    const address = event.user.user_metadata["address"] || {};
+    const delivery_address = event.user.user_metadata["delivery_address"] || {};
     // it is important to deep merge the profile since other approaches would overwrite existing data
-    mergeAttributesToProfile(address, userData);
+    mergeAttributesToProfile(delivery_address, userData);
     // at last we update the user profile through the management api
-    api.user.setUserMetadata("address", address);
+    api.user.setUserMetadata("delivery_address", delivery_address);
   }
 };

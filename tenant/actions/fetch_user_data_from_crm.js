@@ -18,9 +18,9 @@ const axios = require('axios');
         } 
         try {
           let response = await axios(config);
-          let address = response.data.address;
+          let delivery_address = response.data.address;
           let company = response.data.company;
-          api.user.setUserMetadata('address',address);
+          api.user.setUserMetadata('delivery_address',delivery_address);
           api.user.setUserMetadata('company',company);
         }
         catch(e) {

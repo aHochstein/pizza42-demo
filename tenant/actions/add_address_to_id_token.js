@@ -5,8 +5,8 @@
   * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.
   */
   exports.onExecutePostLogin = async (event, api) => {
-    let user_address = event.user.user_metadata["address"];
-    if(user_address) {
-      api.idToken.setCustomClaim('address', user_address)
+    let delivery_address = event.user.user_metadata["delivery_address"];
+    if(delivery_address) {
+      api.idToken.setCustomClaim('delivery_address', delivery_address)
     }
   };
