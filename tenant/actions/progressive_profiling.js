@@ -21,11 +21,11 @@ const schema = {
       "accentColor": "#30AAC0"  // (optional)
   },
   "properties": {
-      "street": {
+      "streetAddress": {
           "label": "Street Address",
           "type": "text",
       },
-      "zipCode": {
+      "postalCode": {
         "label": "Zip Code",
         "type": "text",
       },
@@ -101,10 +101,10 @@ exports.onContinuePostLogin = async (event, api) => {
   // ... and update the user profile if necessary
   const userData = payload.requiredData;
   if (userData) {
-    const customProfile = event.user.user_metadata["customProfile"] || {};
+    const address = event.user.user_metadata["address"] || {};
     // it is important to deep merge the profile since other approaches would overwrite existing data
-    mergeAttributesToProfile(customProfile, userData);
+    mergeAttributesToProfile(address, userData);
     // at last we update the user profile through the management api
-    api.user.setUserMetadata("customProfile", customProfile);
+    api.user.setUserMetadata("address", address);
   }
 };
