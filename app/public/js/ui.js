@@ -75,6 +75,9 @@ const updateUI = async () => {
 
       eachElement(".profile-image", (e) => (e.src = user.picture));
       eachElement(".user-name", (e) => (e.innerText = user.name));
+      eachElement(".user-name-cc", (e) => (e.value = user.name));
+      eachElement(".user-first-name", (e) => (e.value = user.given_name));
+      eachElement(".user-last-name", (e) => (e.value = user.family_name));
       eachElement(".user-email", (e) => (e.innerText = user.email));
       eachElement(".auth-invisible", (e) => e.classList.add("hidden"));
       eachElement(".auth-visible", (e) => e.classList.remove("hidden"));

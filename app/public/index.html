@@ -271,8 +271,24 @@
                 <p>Your Credit Card Information</p>
                 <div class="row">
                   <div class="col-md-6 mb-3">
+                    <label for="cc-name">First Name</label>
+                    <input type="text" class="form-control user-first-name" id="cc-name" placeholder="" required="">
+                    <small class="text-muted">Full name as displayed on card</small>
+                    <div class="invalid-feedback">
+                      First Name is required
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="cc-number">Last Name</label>
+                    <input type="text" class="form-control user-last-name" id="cc-number" placeholder="" required="">
+                    <div class="invalid-feedback">
+                        Last Name is required
+                    </div>
+                  </div>
+         
+                  <div class="col-md-6 mb-3">
                     <label for="cc-name">Name on card</label>
-                    <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                    <input type="text" class="form-control user-name-cc" id="cc-name" placeholder="" required="">
                     <small class="text-muted">Full name as displayed on card</small>
                     <div class="invalid-feedback">
                       Name on card is required
@@ -280,27 +296,11 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="cc-number">Credit card number</label>
-                    <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                    <input type="text" class="form-control" id="cc-number" placeholder="XXXX-XXXX-XXXX-0931" required="">
                     <div class="invalid-feedback">
                       Credit card number is required
                     </div>
                   </div>
-         
-                    <div class="col-md-6 mb-3">
-                      <label for="cc-name">Name on card</label>
-                      <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                      <small class="text-muted">Full name as displayed on card</small>
-                      <div class="invalid-feedback">
-                        Name on card is required
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <label for="cc-number">Credit card number</label>
-                      <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                      <div class="invalid-feedback">
-                        Credit card number is required
-                      </div>
-                    </div>
                  
                 </div>
               </div>
