@@ -57,6 +57,18 @@ resource "auth0_action" "step_up_mfa" {
   }
 }
 
+resource "auth0_action" "add_address_to_id_token" {
+  name    = "add_address_to_id_token"
+  runtime = "node16"
+  deploy  = true
+  code    = file("./actions/add_address_to_id_token.js")
+
+  supported_triggers {
+    id      = "post-login"
+    version = "v3"
+  }
+}
+
 resource "auth0_action" "progressive_profilling" {
   name    = "progressive_profiling"
   runtime = "node16"
@@ -95,6 +107,12 @@ resource "auth0_trigger_binding" "login_flow" {
     id           = auth0_action.progressive_profilling.id
     display_name = auth0_action.progressive_profilling.name
   }
+
+  actions {
+    id           = auth0_action.add_address_to_id_token.id
+    display_name = auth0_action.add_address_to_id_token.name
+  }
+
 }
 
 resource "auth0_connection" "google_oauth2" {
