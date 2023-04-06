@@ -222,7 +222,7 @@ resource "auth0_branding_theme" "my_theme" {
     logo_height           = 100
     logo_position         = "center"
     logo_url              = "https://pizza42-demo.vercel.app/images/pizza42_logo.png"
-    social_buttons_layout = "top"
+    social_buttons_layout = "bottom"
   }
 }
 
