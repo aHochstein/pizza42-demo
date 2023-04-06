@@ -138,10 +138,7 @@ resource "auth0_connection" "users" {
       login = file("./database/login.js")
     }
     configuration = {
-      client_id         = var.migration_tenant_client_id
-      client_secret     = var.migration_tenant_client_secret
-      token_endpoint    = var.migration_tenant_token_endpoint
-      userinfo_endpoint = var.migration_tenat_userinfo_endpoint
+      endpoint = var.migration_login_endpoint
     }
 
   }
