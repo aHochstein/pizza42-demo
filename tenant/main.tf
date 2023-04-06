@@ -225,3 +225,8 @@ resource "auth0_branding_theme" "my_theme" {
     social_buttons_layout = "top"
   }
 }
+
+resource "auth0_custom_domain" "my_custom_domain" {
+  domain = "login.pizza42.authfest.com"
+  type   = "auth0_managed_certs"
+}
