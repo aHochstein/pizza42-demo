@@ -15,4 +15,11 @@ functions:
       - httpApi:
           path: /crm
           method: get
+  login:
+    handler: handler.login
+    events:
+      - httpApi:
+          path: /login
+          method: post
+
 
