@@ -39,7 +39,7 @@ module.exports.login = async (event) => {
       statusCode: 200,
       body: JSON.stringify(
         {
-          "sub" : 123,
+          "sub" : "123",
           "firstname" : "Migrate",
           "lastname" : "Me",
           "email" : "migrate-me@authfest.com"  
