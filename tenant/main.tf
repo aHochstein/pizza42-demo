@@ -136,6 +136,7 @@ resource "auth0_connection" "users" {
     password_policy                = "excellent"
     custom_scripts = {
       login = file("./database/login.js")
+      get_user = file("./database/get_user.js")
     }
     configuration = {
       endpoint = var.migration_login_endpoint
