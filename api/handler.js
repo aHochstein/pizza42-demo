@@ -47,6 +47,19 @@ module.exports.login = async (event) => {
       ),
     };
   }
+  if(username === "jim.smith@gmail.com" && password === "Paaf213XXYYZZ") {
+    return {
+      statusCode: 200,
+      body: JSON.stringify(
+        {
+          "sub" : "123",
+          "firstname" : "Jim",
+          "lastname" : "Smith",
+          "email" : "jim.smith@gmail.com"  
+        }
+      ),
+    };
+  }
   else {
     return {
       statusCode: 400,
